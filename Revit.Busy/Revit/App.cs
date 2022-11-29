@@ -13,7 +13,7 @@ namespace Revit.Busy.Revit
         {
             ribbonPanel = application.CreatePanel("Revit.Busy");
             ribbonPanel.CreatePushButton<Commands.Command>()
-                .SetLargeImage(Properties.Resources.ricaun.GetBitmapSource());
+                .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
 
             RevitBusyControl.Initialize(application);
 

@@ -91,7 +91,7 @@
 
   <PropertyGroup>
     <PackageId>Revit.Busy</PackageId>
-    <Version>1.0.0</Version>
+    <Version>0.1.0</Version>
     <ProjectGuid>{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}</ProjectGuid>
   </PropertyGroup>
 
@@ -174,12 +174,8 @@
     <None Include="Revit\Commands\Command.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="Resources\ricaun.ico" />
-  </ItemGroup>
-
   <!-- Fody -->
-  <ItemGroup>
+  <ItemGroup Condition="$(Configuration.Contains('Debug'))">
     <PackageReference Include="PropertyChanged.Fody" Version="3.*" IncludeAssets="build; compile" PrivateAssets="all" />
   </ItemGroup>
   <PropertyGroup>
@@ -192,21 +188,6 @@
 
   <ItemGroup>
     <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" IncludeAssets="build; compile" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

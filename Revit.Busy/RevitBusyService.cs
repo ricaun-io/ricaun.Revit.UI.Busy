@@ -12,7 +12,7 @@ namespace Revit.Busy
     /// </summary>
     public class RevitBusyService : IDisposable, INotifyPropertyChanged
     {
-        private const double Seconds = 0.5;
+        private const double Millis = 500;
         private readonly UIControlledApplication application;
         private readonly UIApplication uiapp;
         private DispatcherTimer dispatcher;
@@ -40,13 +40,22 @@ namespace Revit.Busy
         }
 
         #region Timer
+        /// <summary>
+        /// SetInterval
+        /// </summary>
+        /// <param name="millis"></param>
+        public void SetInterval(double millis = Millis)
+        {
+            dispatcher.Interval = TimeSpan.FromMilliseconds(millis);
+        }
+
         private void InitializeDispatcherTimer()
         {
             dispatcher = new DispatcherTimer(DispatcherPriority.Background);
-            dispatcher.Interval = TimeSpan.FromSeconds(Seconds);
+            dispatcher.Interval = TimeSpan.FromMilliseconds(Millis);
             dispatcher.Tick += (s, e) =>
             {
-                IsRevitBusy = (DateTime.Now - LastateTime).TotalSeconds > Seconds;
+                IsRevitBusy = (DateTime.Now - LastateTime).TotalMilliseconds > Millis;
             };
             dispatcher.Start();
         }
