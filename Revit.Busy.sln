@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{74BA0492-6BFD-4F77-9C37-70F47D31787D}") = "Revit.Busy", "Revit.Busy\Revit.Busy.csproj", "{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}"
+EndProject
+Project("{74BA0492-6BFD-4F77-9C37-70F47D31787D}") = "Build", "Build\Build.csproj", "{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{44AA1F9A-165C-4BB6-A9EB-5B7A1DBC5EB2}"
+	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.md = CHANGELOG.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

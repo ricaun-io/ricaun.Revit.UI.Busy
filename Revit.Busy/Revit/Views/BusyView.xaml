@@ -1,0 +1,22 @@
+﻿<Window x:Class="Revit.Busy.Revit.Views.BusyView"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Revit.Busy.Revit.Views"
+        xmlns:busy="clr-namespace:Revit.Busy"
+        mc:Ignorable="d"
+        Background="WhiteSmoke"
+        Title="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}">
+
+    <Grid Margin="15">
+        <Grid >
+            <ProgressBar IsIndeterminate="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}"
+                         Height="24"></ProgressBar>
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="Busy"></TextBlock>
+        </Grid>
+    </Grid>
+</Window>
