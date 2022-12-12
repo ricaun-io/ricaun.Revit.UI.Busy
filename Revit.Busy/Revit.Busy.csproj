@@ -91,7 +91,7 @@
 
   <PropertyGroup>
     <PackageId>Revit.Busy</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <ProjectGuid>{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}</ProjectGuid>
   </PropertyGroup>
 

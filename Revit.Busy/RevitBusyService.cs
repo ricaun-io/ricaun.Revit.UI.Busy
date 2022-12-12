@@ -12,7 +12,7 @@ namespace Revit.Busy
     /// </summary>
     public class RevitBusyService : IDisposable, INotifyPropertyChanged
     {
-        private const double Millis = 500;
+        private const double Millis = 1000;
         private readonly UIControlledApplication application;
         private readonly UIApplication uiapp;
         private DispatcherTimer dispatcher;
@@ -101,8 +101,9 @@ namespace Revit.Busy
             get { return isRevitBusy; }
             private set
             {
+                var changed = isRevitBusy != value;
                 isRevitBusy = value;
-                OnPropertyChanged();
+                if (changed) OnPropertyChanged();
             }
         }
         #endregion
