@@ -91,7 +91,7 @@
 
   <PropertyGroup>
     <PackageId>Revit.Busy</PackageId>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <ProjectGuid>{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}</ProjectGuid>
   </PropertyGroup>
 
@@ -107,14 +107,14 @@
   <PropertyGroup>
     <Company>ricaun</Company>
     <Authors>Luiz Henrique Cassettari</Authors>
-    <Description>Revit Package $(PackageId)</Description>
+    <Description>Revit Package to check if RevitIsBusy using UI.Idling</Description>
     <CopyrightYears>$([System.DateTime]::Now.ToString('yyyy'))</CopyrightYears>
   </PropertyGroup>
 
   <PropertyGroup>
     <AssemblyName>$(PackageId)$(PackageAssemblyVersion)</AssemblyName>
     <Product>$(PackageId)</Product>
-    <Copyright>Copyright © $(CopyrightYears) $(Company)</Copyright>
+    <Copyright>Copyright © $(Company) $(CopyrightYears)</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
