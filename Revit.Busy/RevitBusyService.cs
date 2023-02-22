@@ -92,7 +92,7 @@ namespace Revit.Busy
         #endregion
 
         #region IsRevitBusy
-        private bool isRevitBusy;
+        private bool isRevitBusy = true;
         /// <summary>
         /// IsRevitBusy
         /// </summary>
