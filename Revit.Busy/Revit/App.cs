@@ -8,8 +8,6 @@ namespace Revit.Busy.Revit
     [AppLoader]
     public class App : IExternalApplication
     {
-
-
         private static RibbonPanel ribbonPanel;
         private static RibbonItem ribbonItem;
         public Result OnStartup(UIControlledApplication application)
