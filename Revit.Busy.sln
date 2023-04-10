@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{74BA0492-6BFD-4F77-9C37-70F47D31787D}") = "Revit.Busy", "Revit.Busy\Revit.Busy.csproj", "{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Revit.Busy", "Revit.Busy\Revit.Busy.csproj", "{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}"
 EndProject
-Project("{74BA0492-6BFD-4F77-9C37-70F47D31787D}") = "Build", "Build\Build.csproj", "{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Build\Build.csproj", "{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{44AA1F9A-165C-4BB6-A9EB-5B7A1DBC5EB2}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{44
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Revit.Busy.Example", "Revit.Busy.Example\Revit.Busy.Example.csproj", "{CE1D2870-ABE0-4096-95DB-6D6DB724A2E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1D2870-ABE0-4096-95DB-6D6DB724A2E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE1D2870-ABE0-4096-95DB-6D6DB724A2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE1D2870-ABE0-4096-95DB-6D6DB724A2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1D2870-ABE0-4096-95DB-6D6DB724A2E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
