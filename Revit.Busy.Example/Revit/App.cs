@@ -1,9 +1,10 @@
+#if NETFRAMEWORK
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ricaun.Revit.UI;
+using Revit.Busy;
 using System;
-
-namespace Revit.Busy.Revit
+namespace Revit.Busy.Example.Revit
 {
     [AppLoader]
     public class App : IExternalApplication
@@ -12,8 +13,8 @@ namespace Revit.Busy.Revit
         private static RibbonItem ribbonItem;
         public Result OnStartup(UIControlledApplication application)
         {
-            ribbonPanel = application.CreatePanel("Revit.Busy");
-            ribbonItem = ribbonPanel.CreatePushButton<Commands.Command>("View")
+            ribbonPanel = application.CreatePanel("Example");
+            ribbonItem = ribbonPanel.CreatePushButton<Commands.Command>("RevitBusy")
                 .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
 
             RevitBusyControl.Initialize(application);
@@ -35,8 +36,8 @@ namespace Revit.Busy.Revit
         public Result OnShutdown(UIControlledApplication application)
         {
             ribbonPanel?.Remove();
-            RevitBusyControl.Control.PropertyChanged -= RevitBusyControlPropertyChanged;
-            RevitBusyControl.Dispose();
+            if (RevitBusyControl.Control is not null)
+                RevitBusyControl.Control.PropertyChanged -= RevitBusyControlPropertyChanged;
             return Result.Succeeded;
         }
 
@@ -50,5 +51,5 @@ namespace Revit.Busy.Revit
                 ribbonItem.SetLargeImage(LargeImageNoBusy);
         }
     }
-
 }
+#endif
