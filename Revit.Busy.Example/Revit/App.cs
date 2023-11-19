@@ -1,8 +1,9 @@
+#if NETFRAMEWORK
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ricaun.Revit.UI;
+using Revit.Busy;
 using System;
-
 namespace Revit.Busy.Example.Revit
 {
     [AppLoader]
@@ -51,3 +52,4 @@ namespace Revit.Busy.Example.Revit
         }
     }
 }
+#endif
