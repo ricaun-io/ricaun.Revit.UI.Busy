@@ -71,7 +71,7 @@
 
   <!-- RevitVersion -->
   <PropertyGroup>
-    <TargetFrameworks>net46;net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net46;net8.0-windows</TargetFrameworks>
   </PropertyGroup>
   <Choose>
     <When Condition="$(TargetFramework.StartsWith('net4'))">
@@ -165,7 +165,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" IncludeAssets="build; compile" PrivateAssets="All" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*-*" IncludeAssets="build; compile" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>

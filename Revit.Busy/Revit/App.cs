@@ -1,6 +1,7 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ricaun.Revit.UI;
+using ricaun.Revit.UI.Tasks;
 using System;
 
 namespace Revit.Busy.Revit
@@ -8,10 +9,16 @@ namespace Revit.Busy.Revit
     [AppLoader]
     public class App : IExternalApplication
     {
+        private static RevitTaskService revitTaskService;
+        public static IRevitTask RevitTask => revitTaskService;
+
         private static RibbonPanel ribbonPanel;
         private static RibbonItem ribbonItem;
         public Result OnStartup(UIControlledApplication application)
         {
+            revitTaskService = new RevitTaskService(application);
+            revitTaskService.Initialize();
+
             ribbonPanel = application.CreatePanel("Revit.Busy");
             ribbonItem = ribbonPanel.CreatePushButton<Commands.Command>("View")
                 .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
@@ -34,6 +41,8 @@ namespace Revit.Busy.Revit
 
         public Result OnShutdown(UIControlledApplication application)
         {
+            revitTaskService?.Dispose();
+
             ribbonPanel?.Remove();
             RevitBusyControl.Control.PropertyChanged -= RevitBusyControlPropertyChanged;
             RevitBusyControl.Dispose();
