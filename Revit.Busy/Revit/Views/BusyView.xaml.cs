@@ -19,7 +19,10 @@ namespace Revit.Busy.Revit.Views
                 {
                     uiapp.PostCommand(Autodesk.Revit.UI.RevitCommandId.LookupPostableCommandId(Autodesk.Revit.UI.PostableCommand.ArchitecturalWall));
                 });
-                await Task.Delay(2000);
+                await App.RevitTask.Run((uiapp) =>
+                {
+                    // This is just to force the `AsyncRelayCommand` to wait the PostCommand to finish.
+                });
             });
 
             InitializeComponent();
