@@ -8,7 +8,7 @@ namespace Revit.Busy
 {
     /// <summary>
     /// RevitBusyService 
-    /// Each 500 millis check if Idling updates
+    /// Each 1000 millis check if Idling updates
     /// </summary>
     public class RevitBusyService : IDisposable, INotifyPropertyChanged
     {

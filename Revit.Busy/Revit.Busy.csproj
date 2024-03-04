@@ -15,7 +15,7 @@
 
   <!-- RevitVersion -->
   <PropertyGroup>
-    <TargetFrameworks>net46;net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net46;net8.0-windows</TargetFrameworks>
   </PropertyGroup>
   <Choose>
     <When Condition="$(TargetFramework.StartsWith('net4'))">
@@ -56,7 +56,7 @@
 
   <PropertyGroup>
     <PackageId>Revit.Busy</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
     <ProjectGuid>{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}</ProjectGuid>
   </PropertyGroup>
 
@@ -130,7 +130,7 @@
   </ItemGroup>
 
 
-  <ItemGroup Condition="$(TargetFramework.StartsWith('net7'))">
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('net4'))">
     <Compile Remove="Revit\**" />
     <EmbeddedResource Remove="Revit\**" />
     <None Remove="Revit\**" />
@@ -160,7 +160,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" IncludeAssets="build; compile" PrivateAssets="All" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*-*" IncludeAssets="build; compile" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
