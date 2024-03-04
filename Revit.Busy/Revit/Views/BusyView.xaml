@@ -8,15 +8,20 @@
         xmlns:busy="clr-namespace:Revit.Busy"
         mc:Ignorable="d"
         Background="WhiteSmoke"
-        Title="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}">
+        >
+        <!--Title="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}"-->
 
+    <Window.Resources>
+        <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </Window.Resources>
+    
     <Grid Margin="15">
-        <Grid >
-            <ProgressBar IsIndeterminate="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}"
-                         Height="24"></ProgressBar>
-            <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Text="Busy"></TextBlock>
+        <Grid IsEnabled="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}, Converter={StaticResource InverseBooleanConverter}}">
+            <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="120"
+                    Width="120"
+                    Command="{Binding ButtonCommand}">Wall</Button>
         </Grid>
     </Grid>
 </Window>

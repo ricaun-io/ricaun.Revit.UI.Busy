@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.2.1] / 2023-03-04
 ### Features
 - Update `net8.0-windows` version for Revit 2025
+- Update to `countIdling` insted of using timestamp.
 
 ## [0.2.0] / 2023-11-18
 ### Features
