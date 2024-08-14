@@ -71,8 +71,6 @@
 
   <PropertyGroup>
     <PackageId>Revit.Busy.Example</PackageId>
-    <Version>1.0.0</Version>
-    <ProjectGuid>{ce1d2870-abe0-4096-95db-6d6db724a2e9}</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -73,8 +73,6 @@
 
   <PropertyGroup>
     <PackageId>Revit.Busy</PackageId>
-    <Version>0.2.1</Version>
-    <ProjectGuid>{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -106,6 +104,7 @@
     <RepositoryUrl>https://github.com/$(GitHubRepositoryOwner)/$(PackageId)</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIconUrl />
   </PropertyGroup>
 
