@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.2.2] / 2023-08-14
 ### Updated
 - Update references to work with net code.
+- Clear main project and move files to `Example`
 
 ## [0.2.1] / 2023-03-04
 ### Features
