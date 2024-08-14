@@ -54,7 +54,6 @@ namespace Revit.Busy
             dispatcher.Interval = TimeSpan.FromMilliseconds(Millis);
             dispatcher.Tick += (s, e) =>
             {
-                //IsRevitBusy = (DateTime.Now - LastateTime).TotalMilliseconds > Millis;
                 IsRevitBusy = countIdling == 0;
                 countIdling = 0;
             };
@@ -62,11 +61,9 @@ namespace Revit.Busy
         }
 
         private int countIdling = 0;
-        //private DateTime LastateTime;
 
         private void Application_Idling(object sender, Autodesk.Revit.UI.Events.IdlingEventArgs e)
         {
-            //LastateTime = DateTime.Now;
             countIdling++;
             if (NeedToDispose) Dispose();
         }
@@ -109,14 +106,9 @@ namespace Revit.Busy
                 if (changed)
                 {
                     OnPropertyChanged();
-                    //OnPropertyChanged(nameof(IsRevitNotBusy));
                 }
             }
         }
-        //public bool IsRevitNotBusy
-        //{
-        //    get { return !isRevitBusy; }
-        //}
         #endregion
 
         #region PropertyChanged
