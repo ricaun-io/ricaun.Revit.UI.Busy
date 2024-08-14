@@ -12,7 +12,7 @@ namespace Revit.Busy
     /// </summary>
     public class RevitBusyService : IDisposable, INotifyPropertyChanged
     {
-        private const double Millis = 1000;
+        private const double IntervalMillis = 1000;
         private readonly UIControlledApplication application;
         private readonly UIApplication uiapp;
         private DispatcherTimer dispatcher;
@@ -43,15 +43,15 @@ namespace Revit.Busy
         /// <summary>
         /// SetInterval
         /// </summary>
-        /// <param name="millis"></param>
-        public void SetInterval(double millis = Millis)
+        /// <param name="intervalMillis"></param>
+        public void SetInterval(double intervalMillis = IntervalMillis)
         {
-            dispatcher.Interval = TimeSpan.FromMilliseconds(millis);
+            dispatcher.Interval = TimeSpan.FromMilliseconds(intervalMillis);
         }
         private void InitializeDispatcherTimer()
         {
             dispatcher = new DispatcherTimer(DispatcherPriority.Background);
-            dispatcher.Interval = TimeSpan.FromMilliseconds(Millis);
+            dispatcher.Interval = TimeSpan.FromMilliseconds(IntervalMillis);
             dispatcher.Tick += (s, e) =>
             {
                 IsRevitBusy = countIdling == 0;
