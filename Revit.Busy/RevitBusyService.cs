@@ -12,7 +12,7 @@ namespace Revit.Busy
     /// </summary>
     public class RevitBusyService : IDisposable, INotifyPropertyChanged
     {
-        private const double Millis = 1000;
+        private const double IntervalMillis = 1000;
         private readonly UIControlledApplication application;
         private readonly UIApplication uiapp;
         private DispatcherTimer dispatcher;
@@ -43,18 +43,17 @@ namespace Revit.Busy
         /// <summary>
         /// SetInterval
         /// </summary>
-        /// <param name="millis"></param>
-        public void SetInterval(double millis = Millis)
+        /// <param name="intervalMillis"></param>
+        public void SetInterval(double intervalMillis = IntervalMillis)
         {
-            dispatcher.Interval = TimeSpan.FromMilliseconds(millis);
+            dispatcher.Interval = TimeSpan.FromMilliseconds(intervalMillis);
         }
         private void InitializeDispatcherTimer()
         {
             dispatcher = new DispatcherTimer(DispatcherPriority.Background);
-            dispatcher.Interval = TimeSpan.FromMilliseconds(Millis);
+            dispatcher.Interval = TimeSpan.FromMilliseconds(IntervalMillis);
             dispatcher.Tick += (s, e) =>
             {
-                //IsRevitBusy = (DateTime.Now - LastateTime).TotalMilliseconds > Millis;
                 IsRevitBusy = countIdling == 0;
                 countIdling = 0;
             };
@@ -62,11 +61,9 @@ namespace Revit.Busy
         }
 
         private int countIdling = 0;
-        //private DateTime LastateTime;
 
         private void Application_Idling(object sender, Autodesk.Revit.UI.Events.IdlingEventArgs e)
         {
-            //LastateTime = DateTime.Now;
             countIdling++;
             if (NeedToDispose) Dispose();
         }
@@ -109,14 +106,9 @@ namespace Revit.Busy
                 if (changed)
                 {
                     OnPropertyChanged();
-                    //OnPropertyChanged(nameof(IsRevitNotBusy));
                 }
             }
         }
-        //public bool IsRevitNotBusy
-        //{
-        //    get { return !isRevitBusy; }
-        //}
         #endregion
 
         #region PropertyChanged

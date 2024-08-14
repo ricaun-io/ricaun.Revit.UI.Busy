@@ -1,26 +1,35 @@
+using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ricaun.Revit.UI;
-using ricaun.Revit.UI.Tasks;
 using System;
 
 namespace Revit.Busy.Revit
 {
-    [AppLoader]
+    //[AppLoader]
     public class App : IExternalApplication
     {
-        private static RevitTaskService revitTaskService;
-        public static IRevitTask RevitTask => revitTaskService;
+
+        [Transaction(TransactionMode.Manual)]
+        public class Command : IExternalCommand, IExternalCommandAvailability
+        {
+            public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elementSet)
+            {
+                UIApplication uiapp = commandData.Application;
+
+                return Result.Succeeded;
+            }
+
+            public bool IsCommandAvailable(UIApplication applicationData, CategorySet selectedCategories) { return true; }
+        }
+
 
         private static RibbonPanel ribbonPanel;
         private static RibbonItem ribbonItem;
         public Result OnStartup(UIControlledApplication application)
         {
-            revitTaskService = new RevitTaskService(application);
-            revitTaskService.Initialize();
-
             ribbonPanel = application.CreatePanel("Revit.Busy");
-            ribbonItem = ribbonPanel.CreatePushButton<Commands.Command>("View")
+            ribbonItem = ribbonPanel.CreatePushButton<Command>("Busy")
                 .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
 
             RevitBusyControl.Initialize(application);
@@ -41,8 +50,6 @@ namespace Revit.Busy.Revit
 
         public Result OnShutdown(UIControlledApplication application)
         {
-            revitTaskService?.Dispose();
-
             ribbonPanel?.Remove();
             RevitBusyControl.Control.PropertyChanged -= RevitBusyControlPropertyChanged;
             RevitBusyControl.Dispose();

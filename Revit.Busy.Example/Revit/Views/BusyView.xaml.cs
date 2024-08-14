@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Revit.Busy.Revit.Views
+namespace Revit.Busy.Example.Revit.Views
 {
     [PropertyChanged.AddINotifyPropertyChangedInterface]
     public partial class BusyView : Window
     {
         public IAsyncRelayCommand ButtonCommand { get; private set; }
+        public IAsyncRelayCommand ButtonDeleteCommand { get; private set; }
         public BusyView()
         {
             ButtonCommand = new AsyncRelayCommand(async () =>
@@ -19,9 +20,25 @@ namespace Revit.Busy.Revit.Views
                 {
                     uiapp.PostCommand(Autodesk.Revit.UI.RevitCommandId.LookupPostableCommandId(Autodesk.Revit.UI.PostableCommand.ArchitecturalWall));
                 });
-                await Task.Delay(2000);
+                await App.RevitTask.Run((uiapp) =>
+                {
+                    // This is just to force the `AsyncRelayCommand` to wait the PostCommand to finish.
+                });
             });
 
+            ButtonDeleteCommand = new AsyncRelayCommand(async () =>
+            {
+                await App.RevitTask.Run((uiapp) =>
+                {
+                    uiapp.PostCommand(Autodesk.Revit.UI.RevitCommandId.LookupPostableCommandId(Autodesk.Revit.UI.PostableCommand.Delete));
+                });
+                await App.RevitTask.Run((uiapp) =>
+                {
+                    // This is just to force the `AsyncRelayCommand` to wait the PostCommand to finish.
+                });
+            });
+
+            this.Title = "Wall - BusyView";
             InitializeComponent();
             InitializeWindow();
         }
@@ -36,6 +53,11 @@ namespace Revit.Busy.Revit.Views
             new System.Windows.Interop.WindowInteropHelper(this) { Owner = Autodesk.Windows.ComponentManager.ApplicationWindow };
         }
         #endregion
+    }
+
+    public class RevitBusyControl
+    {
+        public static RevitBusyService Control => App.RevitBusyService;
     }
 
     [ValueConversion(typeof(bool), typeof(bool))]

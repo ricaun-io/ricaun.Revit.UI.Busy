@@ -15,12 +15,22 @@
 
   <!-- RevitVersion -->
   <PropertyGroup>
-    <TargetFrameworks>net46;net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net46;net47;net48;net8.0-windows</TargetFrameworks>
   </PropertyGroup>
   <Choose>
-    <When Condition="$(TargetFramework.StartsWith('net4'))">
+    <When Condition="$(TargetFramework.StartsWith('net46'))">
       <PropertyGroup>
         <RevitVersion>2017</RevitVersion>
+      </PropertyGroup>
+    </When>
+    <When Condition="$(TargetFramework.StartsWith('net47'))">
+      <PropertyGroup>
+        <RevitVersion>2019</RevitVersion>
+      </PropertyGroup>
+    </When>
+    <When Condition="$(TargetFramework.StartsWith('net48'))">
+      <PropertyGroup>
+        <RevitVersion>2021</RevitVersion>
       </PropertyGroup>
     </When>
     <Otherwise>
@@ -29,6 +39,13 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
+
+  <!-- Net Core -->
+  <PropertyGroup Condition="!$(TargetFramework.StartsWith('net4'))">
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+  </PropertyGroup>
 
   <!-- Release -->
   <PropertyGroup Condition="!$(Configuration.Contains('Debug'))">
@@ -56,8 +73,6 @@
 
   <PropertyGroup>
     <PackageId>Revit.Busy</PackageId>
-    <Version>0.2.1</Version>
-    <ProjectGuid>{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -89,6 +104,7 @@
     <RepositoryUrl>https://github.com/$(GitHubRepositoryOwner)/$(PackageId)</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIconUrl />
   </PropertyGroup>
 
@@ -129,36 +145,13 @@
     <Page Remove="Revit\**" />
   </ItemGroup>
 
-
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('net4'))">
-    <Compile Remove="Revit\**" />
-    <EmbeddedResource Remove="Revit\**" />
-    <None Remove="Revit\**" />
-    <Page Remove="Revit\**" />
-  </ItemGroup>
-
-  <ItemGroup Condition="$(Configuration.Contains('Debug')) and $(TargetFramework.StartsWith('net4'))">
+  <ItemGroup Condition="$(Configuration.Contains('Debug'))">
     <PackageReference Include="ricaun.Revit.UI" Version="*" />
-    <PackageReference Include="ricaun.Revit.Mvvm" Version="*" />
-    <PackageReference Include="ricaun.Revit.UI.Tasks" Version="*-*" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Revit\App.cs" />
-    <None Include="Revit\Commands\Command.cs" />
   </ItemGroup>
-
-  <!-- Fody -->
-  <ItemGroup Condition="$(Configuration.Contains('Debug'))">
-    <PackageReference Include="PropertyChanged.Fody" Version="3.*" IncludeAssets="build; compile" PrivateAssets="all" />
-  </ItemGroup>
-  <PropertyGroup>
-    <WeaverConfiguration>
-      <Weavers>
-        <PropertyChanged />
-      </Weavers>
-    </WeaverConfiguration>
-  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*-*" IncludeAssets="build; compile" PrivateAssets="All" />
