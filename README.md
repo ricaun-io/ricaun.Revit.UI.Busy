@@ -21,7 +21,7 @@ RevitBusyControl.Initialize(application);
 
 Binding to the `IsRevitBusy` property.
 ```xml
-xmlns:busy="clr-namespace:Revit.Busy"
+xmlns:busy="http://schemas.revit.busy.com/2024/xaml/presentation"
 ```
 ```xml
 {Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}

@@ -5,23 +5,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Revit.Busy.Example.Revit.Views"
-        xmlns:busy="clr-namespace:Revit.Busy.Example.Revit.Views"
+        xmlns:busy="http://schemas.revit.busy.com/2024/xaml/presentation"
         mc:Ignorable="d"
-        Background="WhiteSmoke"
-        >
-        <!--Title="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}"-->
+        Background="WhiteSmoke">
 
     <Window.Resources>
         <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
     </Window.Resources>
-    
-    <Grid Margin="15">
-        <Grid IsEnabled="{Binding IsRevitBusy, Source={x:Static busy:Controls.Control}, Converter={StaticResource InverseBooleanConverter}}">
+
+    <StackPanel Margin="15">
+        <ProgressBar Height="24"
+                     IsIndeterminate="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}" />
+        <Grid Margin="4" />
+        <StackPanel IsEnabled="{Binding IsRevitBusy, Source={x:Static local:RevitBusyControl.Control}, Converter={StaticResource InverseBooleanConverter}}">
             <Button HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Height="120"
-                    Width="120"
-                    Command="{Binding ButtonCommand}">Wall</Button>
-        </Grid>
-    </Grid>
+                    Height="24"
+                    Width="240"
+                    Command="{Binding ButtonCommand}">Create Wall</Button>
+            <Grid Margin="4" />
+            <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="24"
+                    Width="240"
+                    Command="{Binding ButtonDeleteCommand}">Delete Element</Button>
+        </StackPanel>
+    </StackPanel>
 </Window>

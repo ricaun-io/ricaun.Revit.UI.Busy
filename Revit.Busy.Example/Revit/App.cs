@@ -13,7 +13,7 @@ namespace Revit.Busy.Example.Revit
         public static IRevitTask RevitTask => revitTaskService;
 
         private static RibbonPanel ribbonPanel;
-        private static RevitBusyService RevitBusyService;
+        public static RevitBusyService RevitBusyService;
         public Result OnStartup(UIControlledApplication application)
         {
             revitTaskService = new RevitTaskService(application);
@@ -27,6 +27,7 @@ namespace Revit.Busy.Example.Revit
                 .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
 
             RevitBusyService = new RevitBusyService(application);
+            RevitBusyService.SetInterval(100);
             RevitBusyService.PropertyChanged += (s, e) =>
             {
                 UpdateLargeImageBusy(ribbonItem, RevitBusyService.IsRevitBusy);

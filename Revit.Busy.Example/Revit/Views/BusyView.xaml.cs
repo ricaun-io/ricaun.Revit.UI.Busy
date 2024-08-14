@@ -11,6 +11,7 @@ namespace Revit.Busy.Example.Revit.Views
     public partial class BusyView : Window
     {
         public IAsyncRelayCommand ButtonCommand { get; private set; }
+        public IAsyncRelayCommand ButtonDeleteCommand { get; private set; }
         public BusyView()
         {
             ButtonCommand = new AsyncRelayCommand(async () =>
@@ -18,6 +19,18 @@ namespace Revit.Busy.Example.Revit.Views
                 await App.RevitTask.Run((uiapp) =>
                 {
                     uiapp.PostCommand(Autodesk.Revit.UI.RevitCommandId.LookupPostableCommandId(Autodesk.Revit.UI.PostableCommand.ArchitecturalWall));
+                });
+                await App.RevitTask.Run((uiapp) =>
+                {
+                    // This is just to force the `AsyncRelayCommand` to wait the PostCommand to finish.
+                });
+            });
+
+            ButtonDeleteCommand = new AsyncRelayCommand(async () =>
+            {
+                await App.RevitTask.Run((uiapp) =>
+                {
+                    uiapp.PostCommand(Autodesk.Revit.UI.RevitCommandId.LookupPostableCommandId(Autodesk.Revit.UI.PostableCommand.Delete));
                 });
                 await App.RevitTask.Run((uiapp) =>
                 {
@@ -42,9 +55,9 @@ namespace Revit.Busy.Example.Revit.Views
         #endregion
     }
 
-    public class Controls
+    public class RevitBusyControl
     {
-        public static RevitBusyService Control => RevitBusyControl.Control;
+        public static RevitBusyService Control => App.RevitBusyService;
     }
 
     [ValueConversion(typeof(bool), typeof(bool))]
