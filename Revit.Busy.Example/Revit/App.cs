@@ -1,4 +1,3 @@
-#if NETFRAMEWORK
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Revit.Busy;
@@ -11,14 +10,17 @@ namespace Revit.Busy.Example.Revit
     {
         private static RibbonPanel ribbonPanel;
         private static RibbonItem ribbonItem;
+        private static RevitBusyService RevitBusyService;
         public Result OnStartup(UIControlledApplication application)
         {
             ribbonPanel = application.CreatePanel("Example");
             ribbonItem = ribbonPanel.CreatePushButton<Commands.Command>("RevitBusy")
                 .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
 
-            RevitBusyControl.Initialize(application);
-            RevitBusyControl.Control.PropertyChanged += RevitBusyControlPropertyChanged;
+            //RevitBusyControl.Initialize(application);
+            //RevitBusyControl.Control.PropertyChanged += RevitBusyControlPropertyChanged;
+            RevitBusyService = new RevitBusyService(application);
+            RevitBusyService.PropertyChanged += RevitBusyControlPropertyChanged;
 
             UpdateLargeImageBusy(ribbonItem, RevitBusyControl.Control);
 
@@ -38,6 +40,9 @@ namespace Revit.Busy.Example.Revit
             ribbonPanel?.Remove();
             if (RevitBusyControl.Control is not null)
                 RevitBusyControl.Control.PropertyChanged -= RevitBusyControlPropertyChanged;
+
+            RevitBusyService?.Dispose();
+
             return Result.Succeeded;
         }
 
@@ -52,4 +57,3 @@ namespace Revit.Busy.Example.Revit
         }
     }
 }
-#endif
