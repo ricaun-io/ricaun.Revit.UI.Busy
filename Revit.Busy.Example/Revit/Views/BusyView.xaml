@@ -1,11 +1,11 @@
-﻿<Window x:Class="Revit.Busy.Revit.Views.BusyView"
+﻿<Window x:Class="Revit.Busy.Example.Revit.Views.BusyView"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Revit.Busy.Revit.Views"
-        xmlns:busy="clr-namespace:Revit.Busy"
+        xmlns:local="clr-namespace:Revit.Busy.Example.Revit.Views"
+        xmlns:busy="clr-namespace:Revit.Busy.Example.Revit.Views"
         mc:Ignorable="d"
         Background="WhiteSmoke"
         >
@@ -16,7 +16,7 @@
     </Window.Resources>
     
     <Grid Margin="15">
-        <Grid IsEnabled="{Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}, Converter={StaticResource InverseBooleanConverter}}">
+        <Grid IsEnabled="{Binding IsRevitBusy, Source={x:Static busy:Controls.Control}, Converter={StaticResource InverseBooleanConverter}}">
             <Button HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Height="120"

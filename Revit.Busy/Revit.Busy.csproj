@@ -147,26 +147,11 @@
 
   <ItemGroup Condition="$(Configuration.Contains('Debug'))">
     <PackageReference Include="ricaun.Revit.UI" Version="*" />
-    <PackageReference Include="ricaun.Revit.Mvvm" Version="*" />
-    <PackageReference Include="ricaun.Revit.UI.Tasks" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Revit\App.cs" />
-    <None Include="Revit\Commands\Command.cs" />
   </ItemGroup>
-
-  <!-- Fody -->
-  <ItemGroup Condition="$(Configuration.Contains('Debug'))">
-    <PackageReference Include="PropertyChanged.Fody" Version="3.*" IncludeAssets="build; compile" PrivateAssets="all" />
-  </ItemGroup>
-  <PropertyGroup>
-    <WeaverConfiguration>
-      <Weavers>
-        <PropertyChanged />
-      </Weavers>
-    </WeaverConfiguration>
-  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*-*" IncludeAssets="build; compile" PrivateAssets="All" />

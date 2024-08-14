@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Revit.Busy.Revit.Views
+namespace Revit.Busy.Example.Revit.Views
 {
     [PropertyChanged.AddINotifyPropertyChangedInterface]
     public partial class BusyView : Window
@@ -25,6 +25,7 @@ namespace Revit.Busy.Revit.Views
                 });
             });
 
+            this.Title = "Wall - BusyView";
             InitializeComponent();
             InitializeWindow();
         }
@@ -39,6 +40,11 @@ namespace Revit.Busy.Revit.Views
             new System.Windows.Interop.WindowInteropHelper(this) { Owner = Autodesk.Windows.ComponentManager.ApplicationWindow };
         }
         #endregion
+    }
+
+    public class Controls
+    {
+        public static RevitBusyService Control => RevitBusyControl.Control;
     }
 
     [ValueConversion(typeof(bool), typeof(bool))]

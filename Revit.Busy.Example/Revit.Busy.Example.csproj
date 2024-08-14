@@ -97,11 +97,8 @@
 
   <ItemGroup>
     <PackageReference Include="ricaun.Revit.UI" Version="*" />
+    <PackageReference Include="ricaun.Revit.UI.Tasks" Version="*" />
     <PackageReference Include="ricaun.Revit.Mvvm" Version="*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Revit\Commands" />
   </ItemGroup>
 
   <ItemGroup>
@@ -127,6 +124,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Revit.Busy\Revit.Busy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Revit\Views\BusyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

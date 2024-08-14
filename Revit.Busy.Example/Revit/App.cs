@@ -2,55 +2,57 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Revit.Busy;
 using ricaun.Revit.UI;
+using ricaun.Revit.UI.Tasks;
 using System;
 namespace Revit.Busy.Example.Revit
 {
     [AppLoader]
     public class App : IExternalApplication
     {
+        private static RevitTaskService revitTaskService;
+        public static IRevitTask RevitTask => revitTaskService;
+
         private static RibbonPanel ribbonPanel;
-        private static RibbonItem ribbonItem;
         private static RevitBusyService RevitBusyService;
         public Result OnStartup(UIControlledApplication application)
         {
+            revitTaskService = new RevitTaskService(application);
+            revitTaskService.Initialize();
+
             ribbonPanel = application.CreatePanel("Example");
-            ribbonItem = ribbonPanel.CreatePushButton<Commands.Command>("RevitBusy")
+            var ribbonItem = ribbonPanel.CreatePushButton<Commands.Command>("RevitBusy")
                 .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
 
-            //RevitBusyControl.Initialize(application);
-            //RevitBusyControl.Control.PropertyChanged += RevitBusyControlPropertyChanged;
-            RevitBusyService = new RevitBusyService(application);
-            RevitBusyService.PropertyChanged += RevitBusyControlPropertyChanged;
+            var viewButton = ribbonPanel.CreatePushButton<Commands.CommandView>("View")
+                .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
 
-            UpdateLargeImageBusy(ribbonItem, RevitBusyControl.Control);
+            RevitBusyService = new RevitBusyService(application);
+            RevitBusyService.PropertyChanged += (s, e) =>
+            {
+                UpdateLargeImageBusy(ribbonItem, RevitBusyService.IsRevitBusy);
+                UpdateLargeImageBusy(viewButton, RevitBusyService.IsRevitBusy);
+            };
+
+            RevitBusyControl.Initialize(application);
 
             return Result.Succeeded;
-        }
-
-        private void RevitBusyControlPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            Console.WriteLine($"RevitBusyControl PropertyChanged {e.PropertyName} {RevitBusyControl.Control.IsRevitBusy}");
-
-            var control = sender as RevitBusyService;
-            UpdateLargeImageBusy(ribbonItem, control);
         }
 
         public Result OnShutdown(UIControlledApplication application)
         {
             ribbonPanel?.Remove();
-            if (RevitBusyControl.Control is not null)
-                RevitBusyControl.Control.PropertyChanged -= RevitBusyControlPropertyChanged;
 
             RevitBusyService?.Dispose();
+            revitTaskService?.Dispose();
 
             return Result.Succeeded;
         }
 
-        private static void UpdateLargeImageBusy(RibbonItem ribbonItem, RevitBusyService control)
+        private static void UpdateLargeImageBusy(RibbonItem ribbonItem, bool revitBusy)
         {
             const string LargeImageIsBusy = "/UIFrameworkRes;component/ribbon/images/close.ico";
             const string LargeImageNoBusy = "/UIFrameworkRes;component/ribbon/images/add.ico";
-            if (control.IsRevitBusy)
+            if (revitBusy)
                 ribbonItem.SetLargeImage(LargeImageIsBusy);
             else
                 ribbonItem.SetLargeImage(LargeImageNoBusy);
