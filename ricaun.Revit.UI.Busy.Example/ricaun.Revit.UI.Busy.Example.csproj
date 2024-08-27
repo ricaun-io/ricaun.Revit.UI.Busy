@@ -123,7 +123,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Revit.Busy\Revit.Busy.csproj" />
+    <ProjectReference Include="..\ricaun.Revit.UI.Busy\ricaun.Revit.UI.Busy.csproj" />
   </ItemGroup>
 
   <ItemGroup>
