@@ -70,7 +70,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Revit.Busy.Example</PackageId>
+    <PackageId>ricaun.Revit.UI.Busy.Example</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>

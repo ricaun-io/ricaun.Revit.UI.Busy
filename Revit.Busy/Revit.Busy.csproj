@@ -72,7 +72,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Revit.Busy</PackageId>
+    <PackageId>ricaun.Revit.UI.Busy</PackageId>
   </PropertyGroup>
 
   <PropertyGroup>

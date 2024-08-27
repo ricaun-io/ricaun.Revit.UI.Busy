@@ -4,7 +4,7 @@ using Autodesk.Revit.UI;
 using ricaun.Revit.UI;
 using System;
 
-namespace Revit.Busy.Revit
+namespace ricaun.Revit.UI.Busy.Revit
 {
     //[AppLoader]
     public class App : IExternalApplication

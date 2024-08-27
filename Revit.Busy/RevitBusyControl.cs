@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 
-namespace Revit.Busy
+namespace ricaun.Revit.UI.Busy
 {
     /// <summary>
     /// RevitBusyControl
