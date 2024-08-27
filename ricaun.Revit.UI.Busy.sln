@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Revit.Busy", "Revit.Busy\Revit.Busy.csproj", "{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ricaun.Revit.UI.Busy", "ricaun.Revit.UI.Busy\ricaun.Revit.UI.Busy.csproj", "{3BAB660A-FADA-4AF0-BE2E-23B7FC5067FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Build\Build.csproj", "{A64A0CA4-19A5-4F53-8F22-19D1FDF0F6B4}"
 EndProject
@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{44
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Revit.Busy.Example", "Revit.Busy.Example\Revit.Busy.Example.csproj", "{CE1D2870-ABE0-4096-95DB-6D6DB724A2E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ricaun.Revit.UI.Busy.Example", "ricaun.Revit.UI.Busy.Example\ricaun.Revit.UI.Busy.Example.csproj", "{CE1D2870-ABE0-4096-95DB-6D6DB724A2E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
