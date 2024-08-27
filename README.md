@@ -34,6 +34,35 @@ xmlns:busy="http://schemas.revit.busy.com/2024/xaml/presentation"
 {Binding IsRevitBusy, Source={x:Static busy:RevitBusyControl.Control}}
 ```
 
+### RevitBusyService
+
+The `RevitBusyService` class provides a service to manage the busy state of Revit using the `Idling` event.
+```c#
+UIControlledApplication application;
+RevitBusyService revitBusyService = new RevitBusyService(application);
+```
+
+The `IsRevitBusy` property can be used to check if Revit is busy.
+```c#
+bool isRevitBuzy = revitBusyService.IsRevitBusy;
+```
+
+The `INotifyPropertyChanged` is available in the `RevitBusyService` class.
+```c#
+revitBusyService.PropertyChanged += (sender, e) =>
+{
+	if (e.PropertyName == nameof(revitBusyService.IsRevitBusy))
+	{
+		// Do something
+	}
+};
+```
+
+The `RevitBusyService` need to be disposed to clear the `Idling` event.
+```c#
+revitBusyService.Dispose();
+```
+
 ## License
 
 This project is [licensed](LICENSE) under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
