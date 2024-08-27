@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.0.0] / 2023-08-27
 ### Features
+- `RevitBusyService` and `RevitBusyControl` to check the busy state of Revit.
+### Updated
 - Rename `Revit.Busy` to `ricaun.Revit.UI.Busy`.
 
 ## [0.2.2] / 2023-08-14
