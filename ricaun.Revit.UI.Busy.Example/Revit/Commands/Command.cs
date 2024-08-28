@@ -3,7 +3,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
 
-namespace Revit.Busy.Example.Revit.Commands
+namespace ricaun.Revit.UI.Busy.Example.Revit.Commands
 {
     [Transaction(TransactionMode.Manual)]
     public class Command : IExternalCommand, IExternalCommandAvailability

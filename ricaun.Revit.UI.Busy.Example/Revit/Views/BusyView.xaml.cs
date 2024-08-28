@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Revit.Busy.Example.Revit.Views
+namespace ricaun.Revit.UI.Busy.Example.Revit.Views
 {
     [PropertyChanged.AddINotifyPropertyChangedInterface]
     public partial class BusyView : Window

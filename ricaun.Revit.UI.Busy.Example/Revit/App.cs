@@ -1,10 +1,10 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using Revit.Busy;
+using ricaun.Revit.UI.Busy;
 using ricaun.Revit.UI;
 using ricaun.Revit.UI.Tasks;
 using System;
-namespace Revit.Busy.Example.Revit
+namespace ricaun.Revit.UI.Busy.Example.Revit
 {
     [AppLoader]
     public class App : IExternalApplication

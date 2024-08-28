@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] / 2023-08-27
+### Features
+- `RevitBusyService` and `RevitBusyControl` to check the busy state of Revit.
+### Updated
+- Rename `Revit.Busy` to `ricaun.Revit.UI.Busy`.
+
 ## [0.2.2] / 2023-08-14
 ### Features
 - Add `XmlnsPrefix` and `XmlnsDefinition` to `Revit.Busy` namespace.
@@ -38,7 +44,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `RevitBusyService`
 
 [vNext]: ../../compare/1.0.0...HEAD
-[1.0.0]: ../../compare/1.0.0
+[1.0.0]: ../../compare/0.2.2...1.0.0
 [0.2.2]: ../../compare/0.2.1...0.2.2
 [0.2.1]: ../../compare/0.2.0...0.2.1
 [0.2.0]: ../../compare/0.1.2...0.2.0

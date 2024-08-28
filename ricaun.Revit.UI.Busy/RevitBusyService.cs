@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 
-namespace Revit.Busy
+namespace ricaun.Revit.UI.Busy
 {
     /// <summary>
     /// RevitBusyService 
