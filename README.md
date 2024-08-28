@@ -5,6 +5,7 @@
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Build](https://github.com/ricaun-io/ricaun.Revit.UI.Busy/actions/workflows/Build.yml/badge.svg)](https://github.com/ricaun-io/ricaun.Revit.UI.Busy/actions)
+[![Nuget](https://img.shields.io/nuget/v/ricaun.Revit.UI.Busy?logo=nuget&label=Nuget&color=blue)](https://www.nuget.org/packages/ricaun.Revit.UI.Busy)
 
 `ricaun.Revit.UI.Busy` package provides a static control to manage the busy state of Revit using the `Idling` event.
 
