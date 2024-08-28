@@ -42,6 +42,11 @@ UIControlledApplication application;
 RevitBusyService revitBusyService = new RevitBusyService(application);
 ```
 
+The `RevitBusyService` need to be disposed to clear the `Idling` event.
+```c#
+revitBusyService.Dispose();
+```
+
 The `IsRevitBusy` property can be used to check if Revit is busy.
 ```c#
 bool isRevitBuzy = revitBusyService.IsRevitBusy;
@@ -58,9 +63,9 @@ revitBusyService.PropertyChanged += (sender, e) =>
 };
 ```
 
-The `RevitBusyService` need to be disposed to clear the `Idling` event.
+The `SetInterval` method can be used to set the interval between checks; by default, the value is 1000 milliseconds.
 ```c#
-revitBusyService.Dispose();
+revitBusyService.SetInterval(1000);
 ```
 
 ## License
